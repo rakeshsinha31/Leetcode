@@ -7,5 +7,5 @@ def insertion_sort(nums):
     return nums
 
 
-arr = [68, 16, 14, 3, 200, 5]
+arr = [5, 3, 2, 5, 12, 17, 4]
 print(insertion_sort(arr))
