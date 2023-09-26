@@ -33,6 +33,12 @@ class LinkedList:
         self.head = new_node
 
     def insert(self, prev_node_data, data):
+        """
+        _Summary: Insert a new node after prev_node_data
+        Args:
+            prev_node_data: Data of the node after which the new is inserted
+            data: Data of the new node to be inserted
+        """
         new_node = Node(data)
         pos = 0
         cur_node = self.head
@@ -45,6 +51,46 @@ class LinkedList:
                 new_node.next = f_node
                 break
 
+    def delete(self, key):
+        cur_node = self.head
+
+        if cur_node and cur_node.data == key:
+            self.head = cur_node.next
+            cur_node = None
+            return
+
+        prev = None
+        while cur_node and cur_node.data != key:
+            prev = cur_node
+            cur_node = cur_node.next
+
+        # if cur_node.next == None:
+        #     return
+        prev.next = cur_node.next
+        cur_node = None
+
+    def find_length(self):
+        cur_node = self.head
+        if cur_node.next is None:
+            return 0
+
+        length = 0
+        while cur_node:
+            cur_node = cur_node.next
+            length += 1
+        print(length)
+
+    def swap_nodes(self, key1, key2):
+        cur_node = self.head
+        prev1 = None
+        while cur_node:
+            cur_node = cur_node.next
+            if cur_node.data == key1:
+                # prev1 =  cur_node
+                node1 = cur_node
+            if cur_node.data == key2:
+                node2 = cur_node
+
 
 llist = LinkedList()
 llist.append("A")
@@ -54,3 +100,7 @@ llist.append("D")
 llist.prepend("1")
 llist.insert("A", 2)
 llist.print_list()
+# llist.delete(2)
+# llist.delete(1)
+print("---------After deletion-----------")
+llist.find_length()
