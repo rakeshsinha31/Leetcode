@@ -1,12 +1,15 @@
-def romanToInt(s):
-    numeral_map = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
-    decimal = 0
+def romanToInt(s: str) -> int:
+    mapp = {'I':1, "II": 2, "III": 3, "IV": 4, "V": 5, "X": 10, "L": 50, "C": 100, "D":500, "M": 1000}
+    res = 0
     for i in range(len(s)):
-        if i > 0 and numeral_map[s[i]] > numeral_map[s[i - 1]]:
-            decimal += numeral_map[s[i]] - 2 * numeral_map[s[i - 1]]
+        if i+1 < len(s) and mapp[s[i]] < mapp[s[i+1]]:
+            res -= mapp[s[i]]
         else:
-            decimal += numeral_map[s[i]]
-    return decimal
+             res += mapp[s[i]]
+    return res
 
 
-print(romanToInt("IX"))
+
+s = "CMXCVIII"
+ss = romanToInt(s)
+print(ss)

@@ -1,18 +1,23 @@
-def integer_to_roman(number):
-    ROMAN_NUMERAL_TABLE = [
-    ("M", 1000), ("CM", 900), ("D", 500),
-    ("CD", 400), ("C", 100),  ("XC", 90),
-    ("L", 50),   ("XL", 40),  ("X", 10),
-    ("IX", 9),   ("V", 5),    ("IV", 4),
-    ("I", 1)]
-    roman_numerals = []
-    for numeral, value in ROMAN_NUMERAL_TABLE:
-    	count = number // value
-    	number = number - count * value
-    	#count,number = divmod(number, value)
-    	print count, number
-    	roman_numerals.append(numeral * count)
-    return ''.join(roman_numerals)
-            
+def int_to_roman(num: int) -> str:
+    mapp =  {1: "I", 4: "IV", 
+            5: "V", 9: "IX",
+            10: "X", 40: "XL",50: "L", 90: "XC", 100:"C", 
+            400:"CD", 500:"D", 900: "CM",1000:"M"
+        }
+    strr = ""
 
-print integer_to_roman(49)
+    for i in sorted(mapp.keys(), reverse=True):
+        if num//i:
+            count = num//i
+            print(num, i, mapp[i], count)
+            strr += mapp[i] * count
+            num = num % i
+    return strr
+
+
+
+
+n = 3749
+nn = int_to_roman(n)
+print(nn)
+# [1000, 500, 100, 50, 10, 5, 4, 3, 2, 1]
