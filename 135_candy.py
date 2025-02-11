@@ -9,17 +9,16 @@ def candy(ratings):
     Return the minimum number of candies you need to have to distribute the candies to the children.
     """
     candies = [1] * len(ratings)
-    for i in range(len(ratings) - 1):
-        if ratings[i + 1] > ratings[i]:
-            candies[i + 1] = candies[i] + 1
-    # print(candies)
-    for i in range(len(ratings) - 1, 0, -1):
-        if ratings[i - 1] > ratings[i]:
-            candies[i - 1] = candies[i] + 1
-    print(candies)
+    for i in range(len(ratings)-1):
+        if ratings[i+1] > ratings[i]:
+            candies[i+1] = candies[i] +1
+
+    for i in range(len(ratings)-1, 0, -1):
+        print(i)
+        if ratings[i-1] > ratings[i]:
+            candies[i-1] = max(ratings[i], ratings[i-1] + 1)
     return sum(candies)
 
-
-candy([1, 2, 2])
+print(candy([1,2,2]))
 
 # can = [1, 1, 1]
