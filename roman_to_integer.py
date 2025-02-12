@@ -10,6 +10,6 @@ def romanToInt(s: str) -> int:
 
 
 
-s = "CMXCVIII"
+s = "III"
 ss = romanToInt(s)
 print(ss)

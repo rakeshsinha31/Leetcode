@@ -16,7 +16,7 @@ def candy(ratings):
     for i in range(len(ratings)-1, 0, -1):
         print(i)
         if ratings[i-1] > ratings[i]:
-            candies[i-1] = max(ratings[i], ratings[i-1] + 1)
+            candies[i-1] = max(candies[i], candies[i-1] + 1)
     return sum(candies)
 
 print(candy([1,2,2]))
